@@ -1,0 +1,5 @@
+suites:
+    main:
+        namespace: samor
+        psr4_prefix: samor
+        src_path: app
