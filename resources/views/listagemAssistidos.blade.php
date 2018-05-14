@@ -1,32 +1,7 @@
-<html>
-<head>
-    <!-- <link href="/css/app.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"> -->
-    <!-- <title> View de Assistidos </title> -->
-  <body style="background-color:#eaeaea">
-    <!-- <div class="container">
-        <center><h1>Visualização de Assistidos</h1></center>
-        <table class = "table table-bordered table-hover table-striped"> 
-        <?php foreach ($assistidos as $a): ?>
-        <tr>
-            <td><?= $a->id ?></td>
-            <td><?= $a->nome ?></td>
-            <td><?= $a->rg ?></td>
-            <td><?= $a->cpf ?></td>
-            <td><a href="/assistidos/mostra"><icon class="glyphicon glyphicon-search"></span></a></td>
-        </tr>
-        <?php endforeach ?>
-        </table>
-    </div>
-  </body>
-</html> -->
+@extends('principal')
 
-<link href="//netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-<script src="//netdna.bootstrapcdn.com/bootstrap/3.1.0/js/bootstrap.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-
-<div class="container">
-    <center><h1>Lista de assistidos</h1></center
+@section('conteudo')
+    <center><h1>Lista de assistidos</h1></center>
     <div class="row">
         <div class="col-xs-12 col-sm-offset-1 col-sm-10">
             <div class="panel panel-default">
@@ -51,7 +26,7 @@
                     </div>
                 </div>
                 <ul class="list-group" id="contact-list">
-                    <?php foreach ($assistidos as $a): ?>
+                    @foreach ($assistidos as $a)
                         <li class="list-group-item">
                             <div class="col-xs-12 col-sm-3">
                                 <br/>
@@ -78,7 +53,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-2">
                             <br><br>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-eye-open" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="/assistidos/listaPorId?id=<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-eye-open" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
                             <br><br>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
                             <br><br>
@@ -86,16 +61,10 @@
                             </div>
                             <div class="clearfix"><br/></div>
                         </li>
-                    <?php endforeach ?>
+                    @endforeach
                 </ul>
             </div>
         </div>
 	</div>
-    
-    
-</div>
+@stop
 
-
-</body>
-
-</html>
