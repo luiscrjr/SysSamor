@@ -1066,14 +1066,3 @@
             document.getElementById('my_result').classList.add("hidden");
             document.getElementById('my_camera').classList.remove("hidden");
     }
-
-    $('#switch-shadow').on('change', function(){ // on change of state
-        if(this.checked) // if changed state is "CHECKED"
-        {
-            $('#ruaWrapper').removeClass("hidden");
-        }
-        else
-         {
-            $('#ruaWrapper').addClass("hidden");
-         }
-     })

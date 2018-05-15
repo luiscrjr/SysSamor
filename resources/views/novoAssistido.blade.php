@@ -2,7 +2,28 @@
 
 @section('conteudo')
 
+<?php
+//Buscando SO origem do request
+
+$iphone = strpos($_SERVER['HTTP_USER_AGENT'],"iPhone");
+$ipad = strpos($_SERVER['HTTP_USER_AGENT'],"iPad");
+$android = strpos($_SERVER['HTTP_USER_AGENT'],"Android");
+$palmpre = strpos($_SERVER['HTTP_USER_AGENT'],"webOS");
+$berry = strpos($_SERVER['HTTP_USER_AGENT'],"BlackBerry");
+$ipod = strpos($_SERVER['HTTP_USER_AGENT'],"iPod");
+$symbian =  strpos($_SERVER['HTTP_USER_AGENT'],"Symbian");
+
+//Decisão por manter duas versões da view, mobile + desktop
+//Mais verbosa e trabalhosa, mais flexível e com menos impactos de manutenção
+
+$isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $symbian == true); 
+
+?>
+
+<!-- View Desktop -->
+
 <!-- <center><h1>Novo assistido</h1></center> -->
+
 <br/>
 <div class="row">
     <div class="col-xs-12 col-sm-offset-1 col-sm-10">
@@ -13,7 +34,7 @@
                         <br/><br/>
                         <div class="row">
                             <div class="col-offset-1 col-sm-10">
-                                <label>Foto</label>
+                                <label>Tirar foto</label>
                                     <div id="my_camera" style="width:290px; height:215px;"></div>
                                     <div id="my_result" class="hidden"></div>
                                 <br/>
@@ -954,8 +975,21 @@
 
 <script src="/js/webcam.js"></script>
 <script src="/js/jquery3.3.1.js"></script>
+
 <script type="text/javascript">
 
+    $('#switch-shadow').on('change', function(){ // on change of state
+        if(this.checked) // if changed state is "CHECKED"
+        {
+            $('#ruaWrapper').removeClass("hidden");
+        }
+        else
+         {
+            $('#ruaWrapper').addClass("hidden");
+         }
+     })
 </script>
+
+<input type="file" accept="image/*" capture="camera" class="btn btn-success btn-circle btn-lg">
 
 @stop
