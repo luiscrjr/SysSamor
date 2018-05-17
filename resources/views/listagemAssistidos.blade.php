@@ -3,6 +3,11 @@
 @section('conteudo')
     <center><h1>Lista de assistidos</h1></center>
     <div class="row">
+    
+    @if(old('nome'))
+        Assistido {{old('nome')}} adicionado com sucesso!
+    @endif
+
         <div class="col-xs-12 col-sm-offset-1 col-sm-10">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">

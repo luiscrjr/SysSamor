@@ -25,3 +25,5 @@ Route::get('/assistidos', 'AssistidoController@lista');
 Route::get('/assistidos/listaPorId', 'AssistidoController@listaPorId');
 
 Route::get('/assistidos/novo', 'AssistidoController@novo');
+
+Route::post('/assistidos/adiciona', 'AssistidoController@adiciona');
