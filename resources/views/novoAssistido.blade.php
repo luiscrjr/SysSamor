@@ -54,37 +54,37 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             </div>
                             <div class="col-sm-2">
                                 <label>Rg</label>
-                                <input name="rg" class="form-control"/>
+                                <input name="rg" class="form-control" type="Number"/>
                                 <br/>
                             </div>
                             <div class="col-sm-2">
                                 <label>Cpf</label>
-                                <input name="cpf" class="form-control"/>
+                                <input name="cpf" class="form-control" type="Number"/>
                                 <br/>
                             </div>
                             <div class="col-sm-3">
                                 <label>Ctps</label>
-                                <input name="ctps" class="form-control"/>
+                                <input name="ctps" class="form-control" type="Number"/>
                                 <br/>
                             </div>
                             <div class="col-sm-4">
                                 <label>Data de Nascimento</label>
-                                <input type="date" name="dataNascimento" value="" class="form-control" aria-required="true" aria-invalid="false" placeholder="mm/dd/yyyy">
+                                <input type="date" name="data_nascimento" value="" class="form-control" aria-required="true" aria-invalid="false" placeholder="mm/dd/yyyy">
                                 <br/>
                             </div>
                             <div class="col-sm-4">
                                 <label>Título de Eleitor</label>
-                                <input name="titulo" class="form-control"/>
+                                <input name="titulo_eleitor" class="form-control" type="Number"/>
                                 <br/>
                             </div>
                             <div class="col-sm-4">
                                 <label>Cidade de Nascimento</label>
-                                <input name="localNascimento" class="form-control"/>
+                                <input name="local_nascimento" class="form-control"/>
                                 <br/><br/>
                             </div>
                             <div class="col-sm-4">
                                 <label>Quem indicou</label>
-                                <input name="quemIndicou" class="form-control"/>
+                                <input name="nome_pessoa_indicou" class="form-control"/>
                                 <br/>
                             </div>
                             <div class="col-sm-4">
@@ -102,7 +102,7 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             </div>
                             <div class="col-sm-4">
                                 <label>Estado Civil</label>
-                                <select name="estadCivil" id="estado_civil" class="form-control">
+                                <select name="estado_civil" id="estado_civil" class="form-control">
                                     <option value="">Selecione o estado civil</option>
                                     <option value="Solteiro">Solteiro</option>
                                     <option value="Casado">Casado</option>
@@ -115,7 +115,7 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             </div>
                             <div class="col-sm-12">
                                 <label>Informações sobre Família</label>
-                                <textarea name="infoFamilia" class="form-control"></textarea>
+                                <textarea name="familia" class="form-control"></textarea>
                                 <br/><br/>
                             </div>
                             <div class="col-sm-4">
@@ -940,7 +940,7 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             </div>
                             <div class="col-sm-8">
                                 <label>Detalhamento da profissão</label>
-                                <textarea  name="detalhesProfissao" type="tex" class="form-control"></textarea>
+                                <textarea  name="detalhe_profissao" type="tex" class="form-control"></textarea>
                                 <br/><br/>
                             </div>
                             <hr>
@@ -969,14 +969,14 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             <div class="col-sm-offset-1 col-sm-3">
                                 <strong>Mora na rua?</strong>
                                 <div class="switch__container">
-                                <input id="switch-shadow" class="switch switch--shadow" type="checkbox" name="ehDesabrigado">
+                                <input id="switch-shadow" class="switch switch--shadow" type="checkbox" name="eh_desabrigado">
                                 <label for="switch-shadow"></label>
                                 </div>
                                 <br/><br/>
                             </div>
                             <div class="col-sm-8 hidden" id="ruaWrapper">
                                 <label>Motivo de estar na rua</label>
-                                <textarea name="motivoRua" class="form-control"></textarea>
+                                <textarea name="motivo_rua" class="form-control"></textarea>
                                 <br/>
                             </div>
                             <div class="col-sm-12">

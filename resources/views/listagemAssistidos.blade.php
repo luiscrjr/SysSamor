@@ -16,7 +16,7 @@
                             <span class="title"></span>
                         </div>
                         <div class="col-sm-1 col-sm-offset-1">
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-plus"></i></a>
+                            <a href="/assistidos/novo" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-plus"></i></a>
                         </div>
                     </div>
                 </div>                
@@ -58,7 +58,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-2">
                             <br><br>
-                            <a href="/assistidos/listaPorId?id=<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-eye-open" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="/assistidos/listaPorId/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-eye-open" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
                             <br><br>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
                             <br><br>

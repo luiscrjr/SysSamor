@@ -22,7 +22,7 @@ Route::controllers([
 
 Route::get('/assistidos', 'AssistidoController@lista');
 
-Route::get('/assistidos/listaPorId', 'AssistidoController@listaPorId');
+Route::get('/assistidos/listaPorId/{id}', 'AssistidoController@listaPorId');
 
 Route::get('/assistidos/novo', 'AssistidoController@novo');
 

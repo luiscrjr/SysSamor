@@ -16,10 +16,10 @@ class AssistidoController extends Controller{
 
     public function listaPorId(){
         
-        $id = Request::input('id');
-        $assistidos = DB::select('select * from assistidos where id = ?', [$id]);
+        $id = Request::route('id');
+        $assistido = Assistidos::find($id);
 
-        return view('listagemAssistidos')->with('assistidos', $assistidos);
+        return view('listagemAssistidos')->with('assistidos', array($assistido));
     }
 
     public function novo(){
@@ -29,30 +29,9 @@ class AssistidoController extends Controller{
 
     public function adiciona(){
         
-        $nome = Request::input('nome');
-        $foto = "";
-        $documentos = "";
-        $escolaridade = "";
-        $profissao = "";
-        $detalhe_profissao = "";
-        $estado_civil = "";
-        $rg = "";
-        $cpf = "";
-        $ctps = "";
-        $titulo_eleitor = "";
-        $local_nascimento = "";
-        $local_dormitorio = "";
-        $familia = "";
-        $motivo_rua = "";
-        $id_endereco = "";
-        $nome_pessoa_indicou = "";
-        $data_nascimento = "";
-        $eh_desabrigado = "";
-        $data_eh_desabrigado = "";
-
-        $assistidos = DB::insert('insert into assistidos values (null, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', 
-        [$nome, $foto, $documentos, $escolaridade, $profissao, $detalhe_profissao, $estado_civil, $rg, $cpf, $ctps, $titulo_eleitor, $local_nascimento, 
-        $local_dormitorio, $familia, $motivo_rua, $id_endereco, $nome_pessoa_indicou, $data_nascimento, $eh_desabrigado, $data_eh_desabrigado]);
+        $params = Request::all();
+        $assistido = new Assistidos($params);
+        $assistido->save();
 
         return redirect('/assistidos')->withInput();
     }
