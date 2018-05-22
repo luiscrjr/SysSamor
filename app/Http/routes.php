@@ -11,9 +11,13 @@
 |
 */
 
-Route::get('/', 'LoginController@form');
+Route::get('/', function () {
+    return redirect('auth/login');
+});
 
-Route::get('home', 'HomeController@index');
+Route::get('home', function () {
+    return redirect('assistidos');
+});
 
 Route::controllers([
 	'auth' => 'Auth\AuthController',

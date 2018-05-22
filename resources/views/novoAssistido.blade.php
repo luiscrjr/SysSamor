@@ -1,6 +1,6 @@
-@extends('principal')
+@extends('app')
 
-@section('conteudo')
+@section('content')
 
 <?php
 //Buscando SO origem do request
@@ -28,6 +28,16 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
 <div class="row">
     <div class="col-xs-12 col-sm-offset-1 col-sm-10">
         <div class="panel panel-default">
+        <div class="panel-heading c-list">
+                    <div class="row">
+                        <div class="col-sm-10">
+                            <span class="title"></span>
+                        </div>
+                        <div class="col-sm-12">
+                            <center><strong>Cadastrar novo assistido</strong></center>
+                        </div>
+                    </div>
+                </div>
             <div class="row">
                 <div class="col-xs-12 col-sm-offset-1 col-sm-10">
                     <form action="/assistidos/adiciona" method="post">
