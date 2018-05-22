@@ -11,7 +11,7 @@
 |
 */
 
-Route::get('/', 'WelcomeController@index');
+Route::get('/', 'LoginController@form');
 
 Route::get('home', 'HomeController@index');
 
@@ -27,3 +27,5 @@ Route::get('/assistidos/listaPorId/{id}', 'AssistidoController@listaPorId');
 Route::get('/assistidos/novo', 'AssistidoController@novo');
 
 Route::post('/assistidos/adiciona', 'AssistidoController@adiciona');
+
+Route::get('/entrevista/nova/{id}', 'EntrevistaController@nova');

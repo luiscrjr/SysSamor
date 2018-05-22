@@ -1,13 +1,9 @@
 @extends('app')
 
 @section('content')
-    <center><h1>Lista de assistidos</h1></center>
+    <center><h1>Nova Entrevista</h1></center>
     <div class="row">
     
-    @if(old('nome'))
-        Assistido {{old('nome')}} adicionado com sucesso!
-    @endif
-
         <div class="col-xs-12 col-sm-offset-1 col-sm-10">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
@@ -58,7 +54,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-2">
                             <br><br>
-                            <a href="/entrevista/nova/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-comment" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="/entrevista/nova/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-paste" aria-hidden="true" style = "font-size: 20px"></i></a>
                             <br><br>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
                             <br><br>
@@ -68,8 +64,19 @@
                         </li>
                     @endforeach
                 </ul>
+                <div class="row">
+                    <div class="col-sm-offset-1 col-sm-10">
+                        <label>Estado de saúde</label>
+                        <textarea name="estadoSaude" style="height:90%" class="form-control"/></textarea>
+                        <br/>
+                    </div>
+                    <div class="col-sm-offset-1  col-sm-10">
+                        <label>Anotações Gerais</label>
+                        <textarea name="anotacoes"  style="height:90%" class="form-control"/></textarea>
+                        <br/>
+                    </div>
+                </div>
             </div>
         </div>
 	</div>
 @stop
-
