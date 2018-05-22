@@ -8,8 +8,8 @@ class Autorizador {
 	{
 		  if(!$request->is('auth/login') && \Auth::guest()){
 		  	return redirect('/auth/login');
-
-		 	}
+			 }
+			 
 		return $next($request);
 	}
 

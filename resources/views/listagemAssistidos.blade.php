@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-    <center><h1>Lista de assistidos</h1></center>
     <div class="row">
     
     @if(old('nome'))
@@ -12,10 +11,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <div class="row">
-                        <div class="col-sm-10">
-                            <span class="title"></span>
+                        <div class="col-sm-5">
+                            <span class="title"><h4>Lista de Assistidos</h3></span>
                         </div>
-                        <div class="col-sm-1 col-sm-offset-1">
+                        <div class="col-sm-4 col-sm-offset-1 form-inline" style="margin-top:'100px;'">
+                            <input type="text" id="assistidoSearch" class="form-control hidden"/>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Pesquisar Assistido"><i class="glyphicon glyphicon-search" ></i></a>
+                        </div>
+                        <div class="col-sm-1 col-sm-offset-1  form-inline">
                             <a href="/assistidos/novo" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-plus"></i></a>
                         </div>
                     </div>
@@ -58,11 +61,11 @@
                             </div>
                             <div class="col-xs-12 col-sm-2">
                             <br><br>
-                            <a href="/entrevista/nova/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-comment" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="/entrevista/nova/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-comment" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar entrevista"></i></a>
                             <br><br>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar cadastro"></i></a>
                             <br><br>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-trash" style = "font-size: 20px" data-toggle="tooltip" title="Editar"></i></a>
+                            <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-trash" style = "font-size: 20px" data-toggle="tooltip" title="Excluir cadastro"></i></a>
                             </div>
                             <div class="clearfix"><br/></div>
                         </li>
