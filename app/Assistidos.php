@@ -1,6 +1,7 @@
 <?php namespace samor;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\DB;
 
 class Assistidos extends Model {
 
@@ -12,5 +13,6 @@ class Assistidos extends Model {
 	'nome_pessoa_indicou', 'titulo_eleitor', 
 	'local_nascimento', 'familia', 'motivo_rua',
 	'data_nascimento', 'eh_desabrigado');
+
 
 }

@@ -34,4 +34,6 @@ Route::post('/assistidos/adiciona', 'AssistidoController@adiciona');
 
 Route::get('/entrevista/nova/{id}', 'EntrevistaController@nova');
 
-Route::get('/entrevista/adiciona/{id}', 'EntrevistaController@adiciona');
+Route::post('/entrevista/adiciona/{id}', 'EntrevistaController@adiciona');
+
+Route::get('/assistidos/mostraDocumentos/{id}', 'AssistidoController@mostraDocumentos');

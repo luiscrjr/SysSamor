@@ -35,4 +35,20 @@ class AssistidoController extends Controller{
 
         return redirect('/assistidos')->withInput();
     }
+
+    public function mostraDocumentos(){
+
+        $id = Request::route('id');
+        
+        //TODO(lr): Criar a BLL apropriada 
+        $pasta = date("Ymdhmsu") . "-" . $id;
+
+        //TODO(lr): Criar a DAO apropriada
+        $documentos = DB::select('select documentos from assistidos where id = ?', [$id]);
+        
+        DB::update('update assistidos set documentos = ? where id = ?', [$pasta, $id]);
+        mkdir("c:\\temp\\" . $pasta);
+
+        return redirect('/assistidos');
+    }
 }

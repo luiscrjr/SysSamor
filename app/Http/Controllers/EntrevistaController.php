@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\DB;
 use Request;
+use Carbon\Carbon;
+use samor\Assistidos;
 use samor\Entrevistas;
 
 class EntrevistaController extends Controller{
@@ -24,12 +26,14 @@ class EntrevistaController extends Controller{
 
     public function adiciona(){
         
-        $id_assistido = Request::route('id');
-        $id_usuario = Auth::user()->id;
-        dd($id_usuario);
-        $assistido = new Assistidos($params);
-        $assistido->save();
+        $params = Request::all();
+        $params['id_assistido'] = Request::route('id');
+        $params['id_entrevistador'] = \Auth::user()->id;
+        $params['data_entrevista'] = date("Y-m-d h:m:s");
+       
+        $entrevista = new Entrevistas($params);
+        $entrevista->save();
 
-        return redirect('/assistidos')->withInput();
+        return redirect('/assistidos');
     }
 }

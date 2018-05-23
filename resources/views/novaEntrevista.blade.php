@@ -46,7 +46,7 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-2">
                                     <br><br>
-                                    <a href="/entrevista/nova/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Acessar documentos"><i class="glyphicon glyphicon-folder-open" aria-hidden="true" style = "font-size: 20px"></i></a>
+                                    <a href="/assistidos/mostraDocumentos/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Acessar documentos"><i class="glyphicon glyphicon-folder-open" aria-hidden="true" style = "font-size: 20px"></i></a>
                                     <br><br>
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar novo documento"><i class="glyphicon glyphicon-paperclip" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
                                     <br><br>
@@ -58,16 +58,17 @@
                 </div>
                 <div class="row">
                 <form action="/entrevista/adiciona/<?= $a->id ?>" method="post">
+                <input type="hidden" name="_token" value="{{ csrf_token() }}">     
                     <div class="col-sm-offset-1 col-sm-10">
                         <br>   
                         <label>Estado de saúde</label>
-                        <textarea name="estadoSaude" style="height:90px" class="form-control"/></textarea>
+                        <textarea name="estado_saude" style="height:90px" class="form-control"></textarea>
                         <br/>
                     </div>
                     <div class="col-sm-offset-1  col-sm-10">
                         <br>
                         <label>Anotações Gerais</label>
-                        <textarea name="anotacoes"  style="height:90px" class="form-control"/></textarea>
+                        <textarea name="observacao"  style="height:90px" class="form-control" required></textarea>
                         <br/>
                     </div>
                     <div class="col-sm-offset-1  col-sm-10">
