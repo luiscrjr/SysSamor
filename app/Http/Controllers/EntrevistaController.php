@@ -1,9 +1,8 @@
 <?php namespace samor\Http\Controllers;
 
 use Illuminate\Support\Facades\DB;
-use samor\Assistido;
 use Request;
-use samor\Assistidos;
+use samor\Entrevistas;
 
 class EntrevistaController extends Controller{
 
@@ -25,7 +24,9 @@ class EntrevistaController extends Controller{
 
     public function adiciona(){
         
-        $params = Request::all();
+        $id_assistido = Request::route('id');
+        $id_usuario = Auth::user()->id;
+        dd($id_usuario);
         $assistido = new Assistidos($params);
         $assistido->save();
 

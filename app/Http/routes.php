@@ -33,3 +33,5 @@ Route::get('/assistidos/novo', 'AssistidoController@novo');
 Route::post('/assistidos/adiciona', 'AssistidoController@adiciona');
 
 Route::get('/entrevista/nova/{id}', 'EntrevistaController@nova');
+
+Route::get('/entrevista/adiciona/{id}', 'EntrevistaController@adiciona');

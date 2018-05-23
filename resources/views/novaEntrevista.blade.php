@@ -57,6 +57,7 @@
                         </ul>
                 </div>
                 <div class="row">
+                <form action="/entrevista/adiciona/<?= $a->id ?>" method="post">
                     <div class="col-sm-offset-1 col-sm-10">
                         <br>   
                         <label>Estado de saúde</label>
@@ -74,6 +75,7 @@
                         <button type="submit" class="btn btn-primary btn-block">Salvar entrevista</button>
                         <br/>
                     </div>
+                </form>
                 </div>
             </div>
         </div>
