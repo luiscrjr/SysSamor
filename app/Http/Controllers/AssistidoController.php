@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\DB;
 use samor\Assistido;
 use Request;
 use samor\Assistidos;
+use Illuminate\Support\Facades\File;
 
 class AssistidoController extends Controller{
 
@@ -36,7 +37,7 @@ class AssistidoController extends Controller{
         return redirect('/assistidos')->withInput();
     }
 
-    public function mostraDocumentos(){
+    public function listaDocumentos(){
 
         $id = Request::route('id');
         
@@ -46,9 +47,34 @@ class AssistidoController extends Controller{
         //TODO(lr): Criar a DAO apropriada
         $documentos = DB::select('select documentos from assistidos where id = ?', [$id]);
         
-        DB::update('update assistidos set documentos = ? where id = ?', [$pasta, $id]);
-        mkdir("c:\\temp\\" . $pasta);
+        //TODO(lr): Separar no controller de subir documentos
+        //TODO(lr): Verificar se já existe diretório criado antes de criar
+        //DB::update('update assistidos set documentos = ? where id = ?', [$pasta, $id]);
+        //mkdir("c:\\temp\\" . $pasta);
 
-        return redirect('/assistidos');
+        $files = File::allFiles("C:\Users\luis.ribeiro\samor\storage\app");
+        $allFiles = array();
+
+        foreach ($files as $file)
+        {
+            array_push($allFiles,(string)$file);             
+        }
+
+        return \Response::json($allFiles);
     }
+
+    public function baixaDocumento(){
+
+        // any custom logic
+    
+       //check if user is logged in or user have permission to download this file etc
+    
+    
+        $headers = [
+            'Content-Type' => 'image/png',
+        ];
+    
+        return response()->download(storage_path('app/example.png'), 'filename.jpeg', $headers);
+     }
+    
 }

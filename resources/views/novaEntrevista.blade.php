@@ -46,10 +46,13 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-2">
                                     <br><br>
-                                    <a href="/assistidos/mostraDocumentos/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Acessar documentos"><i class="glyphicon glyphicon-folder-open" aria-hidden="true" style = "font-size: 20px"></i></a>
+                                    <!-- <a href="/assistidos/listadocumentos/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Acessar documentos" id="listaDocs"><i class="glyphicon glyphicon-folder-open" aria-hidden="true" style = "font-size: 20px"></i></a> -->
+                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Acessar documentos" id="listaDocs"><i class="glyphicon glyphicon-folder-open" aria-hidden="true" style = "font-size: 20px"></i></a>
                                     <br><br>
-                                    <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar novo documento"><i class="glyphicon glyphicon-paperclip" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
+                                    <a href="#" data-toggle="modal" data-target="#exampleModal" data-target="#squarespaceModal" data-placement="top" title="Adicionar novo documento"><i class="glyphicon glyphicon-paperclip" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
                                     <br><br>
+
+                                               
                                     </div>
                                     <div class="clearfix"><br/></div>
                                 </li>
@@ -81,4 +84,39 @@
             </div>
         </div>
 	</div>
+
+    <script type="text/javascript">
+
+        $("#listaDocs").click(function(){
+            $("#modalContent").replaceWith("<div class='modal-body' id='modalContent'>testando</div>");
+
+            $.ajax({
+                type: "GET",
+                url: "/assistidos/listadocumentos/3",
+                dataType: "json", 
+                data: {},
+                contentType:"application/json; charset=utf-8",
+                async: true,
+            success: function(response) {
+
+                //var links = "";
+                $(response).each(function(){
+                    //continuar a escrever
+                    $("#modalContent").attr( "<a href='#'>" + $(this).text() + "</a>" );
+                })
+
+                console.log(links);
+            },
+            error: function(jqXHR, textStatus, errorThrown) {
+                console.log(textStatus);
+                console.log(errorThrown);
+            }
+            });	
+
+
+
+            $('#exampleModal').modal('toggle');
+        })
+    </script>
+
 @stop
