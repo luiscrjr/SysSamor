@@ -88,34 +88,46 @@
     <script type="text/javascript">
 
         $("#listaDocs").click(function(){
-            $("#modalContent").replaceWith("<div class='modal-body' id='modalContent'>testando</div>");
 
             $.ajax({
                 type: "GET",
-                url: "/assistidos/listadocumentos/3",
+                url: "/assistidos/listadocumentos/<?= $a->id ?>",
                 dataType: "json", 
                 data: {},
                 contentType:"application/json; charset=utf-8",
                 async: true,
+            beforeSend: function(){
+                $("#loaderBack").removeClass("hidden");
+                $("#loaderBack").addClass("menu");
+            },
             success: function(response) {
 
-                //var links = "";
-                $(response).each(function(){
-                    //continuar a escrever
-                    $("#modalContent").attr( "<a href='#'>" + $(this).text() + "</a>" );
-                })
+                var links = "";
+                
+                if(response.length > 0){
+        
+                    for(var i=0; i<response.length; i++){
+                        links += "<a href='/assistidos/baixadocumento/<?= $a->id ?>/"+response[i]+"'>"+response[i]+"</a><br/>";
+                    }
+                }
+                else{
 
-                console.log(links);
+                    links = "<span class='text-muted'>Opa! Não temos documentos cadastrados para esse assistido ainda.</span>";
+                }
+                
+                $("#loaderBack").removeClass("menu");
+                $("#loaderBack").addClass("hidden");
+                $("#exampleModalLabel").replaceWith("<center><h4 class='modal-title' id='exampleModalLabel'>Lista de documentos</h5></center>");
+                $("#modalContent").replaceWith("<div class='modal-body' id='modalContent'>"+links+"</div>");
+                $('#exampleModal').modal('toggle');
+
             },
             error: function(jqXHR, textStatus, errorThrown) {
                 console.log(textStatus);
                 console.log(errorThrown);
             }
             });	
-
-
-
-            $('#exampleModal').modal('toggle');
+            
         })
     </script>
 

@@ -24,6 +24,51 @@
 		z-index: -1;
 		background-color: #000000;
 	}
+
+	.loader {
+		
+		background-color: #ffff;
+		position: absolute;
+		left: 50%;
+		top: 50%;
+		z-index: 1;
+		margin: -75px 0 0 -75px;
+		border: 16px solid #f3f3f3;
+		border-radius: 50%;
+		border-top: 16px solid #3498db;
+		width: 120px;
+		height: 120px;
+		-webkit-animation: spin 1s linear infinite;
+		animation: spin 1s linear infinite;
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	@keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	}
+
+	.menu{
+	background-color: white;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	z-index: 1;
+	filter:alpha(opacity=80);
+     opacity: 0.8;
+     -moz-opacity:0.8;
+     -webkit-opacity:0.8;
+	}
+
+	body, html{
+	height: 100%;
+	}
+
+
 	</style>
     
 	<!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -34,6 +79,7 @@
 	<![endif]-->
 </head>
 <body style="overflow-x:hidden">
+	<div id="loaderBack" class="hidden"><div class="loader" id="loader"></div></div>
 	<nav class="navbar navbar-default">
 		<div class="container-fluid">
 			<div class="navbar-header">
@@ -78,20 +124,18 @@
 			<div class="modal-content">
 				<div class="modal-header">
 					<h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-					<span aria-hidden="true">&times;</span>
 					</button>
 				</div>
 				<div class="modal-body" id="modalContent">
 					...
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-					<button type="button" class="btn btn-primary">Save changes</button>
+					<button type="button" class="btn btn-secondary" data-dismiss="modal">Fechar</button>
 				</div>
 			</div>
 		</div>
 	</div>
+	<div id="loader"></div>
 
 	<!-- Scripts -->
 	<script src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>

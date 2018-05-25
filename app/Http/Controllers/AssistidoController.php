@@ -42,22 +42,32 @@ class AssistidoController extends Controller{
         $id = Request::route('id');
         
         //TODO(lr): Criar a BLL apropriada 
-        $pasta = date("Ymdhmsu") . "-" . $id;
+        //$pasta = date("Ymdhmsu") . "-" . $id;
 
-        //TODO(lr): Criar a DAO apropriada
-        $documentos = DB::select('select documentos from assistidos where id = ?', [$id]);
         
         //TODO(lr): Separar no controller de subir documentos
         //TODO(lr): Verificar se já existe diretório criado antes de criar
         //DB::update('update assistidos set documentos = ? where id = ?', [$pasta, $id]);
         //mkdir("c:\\temp\\" . $pasta);
 
-        $files = File::allFiles("C:\Users\luis.ribeiro\samor\storage\app");
+        //TODO(lr): Criar a DAO apropriada
+        $documentos = DB::select('select documentos from assistidos where id = ?', [$id]);
+
+        $caminhoRelativo = "vazio\\";
+
+        foreach ($documentos as $caminho) {
+            
+            $caminhoRelativo = $caminho->documentos != "" ? $caminho->documentos . "\\" : "vazio\\";
+        }
+        
+
+        $files = File::allFiles("C:\\Users\\luis.ribeiro\\samor\\storage\\app\\".$caminhoRelativo);
         $allFiles = array();
 
         foreach ($files as $file)
         {
-            array_push($allFiles,(string)$file);             
+             $fileFinal = explode("\\", $file);
+             array_push($allFiles,(string) end($fileFinal));                       
         }
 
         return \Response::json($allFiles);
@@ -65,16 +75,24 @@ class AssistidoController extends Controller{
 
     public function baixaDocumento(){
 
-        // any custom logic
-    
-       //check if user is logged in or user have permission to download this file etc
-    
+        $id = Request::route('id');
+        $documento = Request::route('documento');
+
+        $caminhodocumento = DB::select('select documentos from assistidos where id = ?', [$id]);
+
+        $caminhoRelativo = "";
+
+        foreach ($caminhodocumento as $caminho) {
+            $caminhoRelativo = $caminho->documentos . "\\";
+        }
+
+        $caminhoFisico = "C:\\Users\\luis.ribeiro\\samor\\storage\\app\\";
     
         $headers = [
             'Content-Type' => 'image/png',
         ];
     
-        return response()->download(storage_path('app/example.png'), 'filename.jpeg', $headers);
+        return response()->download($caminhoFisico.$caminhoRelativo.$documento, $documento, $headers);
      }
     
 }
