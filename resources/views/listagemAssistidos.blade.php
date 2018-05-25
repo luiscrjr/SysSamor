@@ -38,7 +38,7 @@
                         <li class="list-group-item">
                             <div class="col-xs-12 col-sm-3">
                                 <br/>
-                                <img src="{{ url('/img/example.png')  }}" alt="Scott Stevens" class="img-responsive img-circle" />
+                                <img src="/img/default.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
                             </div>
                             <div class="col-xs-12 col-sm-7">
                                 <span class="name"><h3><?= $a->nome ?></h3></span>

@@ -60,7 +60,7 @@ class AssistidoController extends Controller{
             $caminhoRelativo = $caminho->documentos != "" ? $caminho->documentos . "\\" : "vazio\\";
         }
         
-
+        //TODO(lr):Abstrair caminho fisico de downloads
         $files = File::allFiles("C:\\Users\\luis.ribeiro\\samor\\storage\\app\\".$caminhoRelativo);
         $allFiles = array();
 
@@ -85,11 +85,12 @@ class AssistidoController extends Controller{
         foreach ($caminhodocumento as $caminho) {
             $caminhoRelativo = $caminho->documentos . "\\";
         }
-
+        
+        //TODO(lr):Abstrair caminho fisico de downloads
         $caminhoFisico = "C:\\Users\\luis.ribeiro\\samor\\storage\\app\\";
     
         $headers = [
-            'Content-Type' => 'image/png',
+            'Content-Type' => '',
         ];
     
         return response()->download($caminhoFisico.$caminhoRelativo.$documento, $documento, $headers);
