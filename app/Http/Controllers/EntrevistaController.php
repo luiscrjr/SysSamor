@@ -16,6 +16,23 @@ class EntrevistaController extends Controller{
         return view('listagemAssistidos')->with('assistidos', array($assistido));
     }
 
+    public function listaPorAssistido(){
+        
+        $id = Request::route('id');
+        $entrevistas = DB::select('SELECT 
+        a.nome assistido, u.name usuario, data_entrevista, estado_saude, observacao
+            FROM
+                entrevistas e
+                    INNER JOIN
+                assistidos a ON e.id_assistido = a.id
+                    INNER JOIN
+                users u ON u.id = e.id_entrevistador
+            WHERE
+                id_assistido = ?', [$id]);
+        
+        return view('listagemEntrevistas')->with('entrevistas', $entrevistas)->with('assistido', $id);
+    }
+
     public function nova(){
 
         $id = Request::route('id');

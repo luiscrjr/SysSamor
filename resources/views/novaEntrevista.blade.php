@@ -1,7 +1,6 @@
 @extends('app')
 
 @section('content')
-    <center><h1>Nova Entrevista</h1></center>
     <div class="row">
     
         <div class="col-xs-12 col-sm-offset-1 col-sm-10">
@@ -9,7 +8,8 @@
                 <div class="panel-heading c-list">
                     <div class="row">
                         <div class="col-sm-10">
-                            <span class="title"></span>
+                            <span class="title">
+                                <center><h4>Nova Entrevista</h4></center></span>
                         </div>
                         <div class="col-sm-1 col-sm-offset-1">
                             
@@ -51,8 +51,8 @@
                                     <br><br>
                                     <a href="#" data-toggle="modal" data-target="#exampleModal" data-target="#squarespaceModal" data-placement="top" title="Adicionar novo documento"><i class="glyphicon glyphicon-paperclip" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
                                     <br><br>
-
-                                               
+                                    <a href="#" data-toggle="modal" data-target="#exampleModal" data-target="#squarespaceModal" data-placement="top" title="Visualizar entrevistas"><i class="glyphicon glyphicon-list-alt" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
+                                    <br><br>   
                                     </div>
                                     <div class="clearfix"><br/></div>
                                 </li>

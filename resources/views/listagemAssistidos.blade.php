@@ -61,7 +61,7 @@
                             </div>
                             <div class="col-xs-12 col-sm-2">
                             <br><br>
-                            <a href="/entrevista/nova/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-comment" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar entrevista"></i></a>
+                            <a href="/entrevista/listaPorAssistido/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Visualizar entrevistas"><i class="glyphicon glyphicon-list-alt" style = "font-size: 20px" data-toggle="tooltip" title="Visualizar entrevistas"></i></a>
                             <br><br>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar cadastro"></i></a>
                             <br><br>

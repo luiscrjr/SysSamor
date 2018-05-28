@@ -34,7 +34,7 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             <span class="title"></span>
                         </div>
                         <div class="col-sm-12">
-                            <center><strong>Cadastrar novo assistido</strong></center>
+                            <center><h4>Cadastrar novo assistido</h4></center>
                         </div>
                     </div>
                 </div>
