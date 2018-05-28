@@ -32,6 +32,10 @@ Route::get('/assistidos/novo', 'AssistidoController@novo');
 
 Route::post('/assistidos/adiciona', 'AssistidoController@adiciona');
 
+Route::get('/assistidos/getEstadoPorId/{id}', 'AssistidoController@getEstadoPorId');
+
+Route::post('/assistidos/enviaDocumento/{id}', 'AssistidoController@enviaDocumento');
+
 Route::get('/entrevista/nova/{id}', 'EntrevistaController@nova');
 
 Route::post('/entrevista/adiciona/{id}', 'EntrevistaController@adiciona');

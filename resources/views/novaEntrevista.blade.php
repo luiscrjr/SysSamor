@@ -2,7 +2,11 @@
 
 @section('content')
     <div class="row">
-    
+
+    @if(!empty($Sucesso) || !empty($Erro))
+        Teste
+    @endif
+
         <div class="col-xs-12 col-sm-offset-1 col-sm-10">
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
@@ -46,10 +50,9 @@
                                     </div>
                                     <div class="col-xs-12 col-sm-2">
                                     <br><br>
-                                    <!-- <a href="/assistidos/listadocumentos/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Acessar documentos" id="listaDocs"><i class="glyphicon glyphicon-folder-open" aria-hidden="true" style = "font-size: 20px"></i></a> -->
                                     <a href="#" data-toggle="tooltip" data-placement="top" title="Acessar documentos" id="listaDocs"><i class="glyphicon glyphicon-folder-open" aria-hidden="true" style = "font-size: 20px"></i></a>
                                     <br><br>
-                                    <a href="#" data-toggle="modal" data-target="#exampleModal" data-target="#squarespaceModal" data-placement="top" title="Adicionar novo documento"><i class="glyphicon glyphicon-paperclip" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
+                                    <a href="#" id="addDocs"><i class="glyphicon glyphicon-paperclip" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
                                     <br><br>
                                     <a href="#" data-toggle="modal" data-target="#exampleModal" data-target="#squarespaceModal" data-placement="top" title="Visualizar entrevistas"><i class="glyphicon glyphicon-list-alt" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
                                     <br><br>   
@@ -123,11 +126,23 @@
 
             },
             error: function(jqXHR, textStatus, errorThrown) {
-                console.log(textStatus);
-                console.log(errorThrown);
+                $("#loaderBack").removeClass("menu");
+                $("#loaderBack").addClass("hidden");
+                $("#exampleModalLabel").replaceWith("<center><h4 class='modal-title' id='exampleModalLabel'>Lista de documentos</h5></center>");
+                $("#modalContent").replaceWith("<div class='modal-body' id='modalContent'>Erro ao processar solicitação.</div>");
+                $('#exampleModal').modal('toggle');
             }
             });	
             
+        })
+
+        $("#addDocs").click(function(){
+            $("#exampleModalLabel").replaceWith("<center><h4 class='modal-title' id='exampleModalLabel'>Envio de documentos</h5></center>");
+            $("#modalContent").replaceWith("<div class='modal-body' id='modalContent'><br><label>Digite o tipo do documento e selecione o arquivo desejado:</label><br><br><br><form action='/assistidos/enviaDocumento/"+
+                                <?= $a->id ?> + "' method='POST' enctype='multipart/form-data'><input type='hidden' name='_token' value='{{ csrf_token() }}'>"+
+                                "<div class='row'><div class='col-sm-5'><input type='text' placeholder='Digite o tipo do documento sem espaços' required class='form-control' name='tipoDoc'></div><div class='col-sm-7'>"+
+                                "<input type='file' class='form-control-file' id='docUpload' name='docUpload'><button class='btn btn-primary' style='margin-left:80%;' >Enviar</button></div></div>");            
+            $('#exampleModal').modal('toggle');
         })
     </script>
 
