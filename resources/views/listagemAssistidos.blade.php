@@ -11,14 +11,14 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <div class="row">
-                        <div class="col-sm-5">
-                            <span class="title"><h4>Lista de Assistidos</h3></span>
+                        <div class="col-sm-3 col-sm-offset-4">
+                            <span class="title"><h3>Lista de Assistidos</h3></span>
                         </div>
-                        <div class="col-sm-4 col-sm-offset-1 form-inline" style="margin-top:'100px;'">
-                            <input type="text" id="assistidoSearch" class="form-control hidden"/>
+                        <div class="col-sm-3 col-sm-offset-1 form-inline" style="margin-top:'100px;'">
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Pesquisar Assistido"><i class="glyphicon glyphicon-search" ></i></a>
+                            <input type="text" id="assistidoSearch" class="form-control" placeholder="Pesquise por nome aqui">
                         </div>
-                        <div class="col-sm-1 col-sm-offset-1  form-inline">
+                        <div class="col-sm-1">
                             <a href="/assistidos/novo" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-plus"></i></a>
                         </div>
                     </div>
@@ -35,27 +35,28 @@
                 </div>
                 <ul class="list-group" id="contact-list">
                     @foreach ($assistidos as $a)
-                        <li class="list-group-item">
+                        <li class="list-group-item" id="<?= $a->id ?>">
                             <div class="col-xs-12 col-sm-3">
                                 <br/>
                                 <img src="/img/assistidos/<?= $a->id ?>.jpg" class="img-responsive img-circle" />
                             </div>
                             <div class="col-xs-12 col-sm-7">
-                                <span class="name"><h3><?= $a->nome ?></h3></span>
+                            <br>
+                                <span class="assistidoName"><h4><strong><?= $a->nome ?></strong></h4></span>
                                 <div style="margin:7px">
-                                    <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Estado Civil"></span>
+                                    <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Estado Civil" style="color:red; font-size:19px"></span>
                                     <span><?= $a->estado_civil ?></span>                           
                                 </div>
                                 <div style="margin:7px">
-                                    <span class="glyphicon glyphicon-wrench" data-toggle="tooltip" title="Profissão"></span>
+                                    <span class="glyphicon glyphicon-wrench" data-toggle="tooltip" title="Profissão"  style="color:brown; font-size:19px"></span>
                                     <span><?= $a->profissao ?></span>
                                 </div>
                                 <div style="margin:7px">
-                                    <span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Nascimento"></span>
+                                    <span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Nascimento"  style="color:purple; font-size:19px"></span>
                                     <span><?= $a->data_nascimento ?></span>
                                 </div>
                                 <div style="margin:7px">
-                                    <span class="glyphicon glyphicon-map-marker" data-toggle="tooltip" title="Local dormitório"></span>
+                                    <span class="glyphicon glyphicon-map-marker" data-toggle="tooltip" title="Local dormitório"  style="color:green; font-size:19px"></span>
                                     <span>Avenida rio Branco, 156 - Centro / Rio de Janeiro </span>
                                 </div>
                             </div>
@@ -74,5 +75,21 @@
             </div>
         </div>
 	</div>
+    <script type="text/javascript">
+        $( "#assistidoSearch" ).keyup(function() {
+            var actualInput = $( "#assistidoSearch" ).val();
+
+            $(".assistidoName").each(function(){
+                var actualName = $(this).text();
+                
+                if(actualName.indexOf(actualInput) != -1){
+                    $(this).parent().parent().css("display", "block");
+                }else{
+                    $(this).parent().parent().css("display", "none");
+                }
+            })
+        });
+    </script>
+    
 @stop
 

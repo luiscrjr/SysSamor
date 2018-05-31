@@ -29,6 +29,10 @@ class EntrevistaController extends Controller{
                 users u ON u.id = e.id_entrevistador
             WHERE
                 id_assistido = ?', [$id]);
+
+        if(count($entrevistas)==0){
+            return redirect('/assistidos');
+        }
         
         return view('listagemEntrevistas')->with('entrevistas', $entrevistas)->with('assistido', $id);
     }

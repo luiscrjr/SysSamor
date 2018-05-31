@@ -11,9 +11,9 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <div class="row">
-                        <div class="col-sm-10">
+                        <div class="col-sm-12">
                             <span class="title">
-                                <center><h4>Nova Entrevista</h4></center></span>
+                                <center><h3>Nova Entrevista</h3></center></span>
                         </div>
                         <div class="col-sm-1 col-sm-offset-1">
                             
@@ -30,21 +30,21 @@
                                         <img src="/img/assistidos/<?= $a->id ?>.jpg" class="img-responsive img-circle" />
                                     </div>
                                     <div class="col-xs-12 col-sm-7">
-                                        <span class="name"><h3><?= $a->nome ?></h3></span>
+                                        <span class="name"><h4><strong><?= $a->nome ?></strong></h4></span>
                                         <div style="margin:7px">
-                                            <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Estado Civil"></span>
+                                            <span class="glyphicon glyphicon-heart" data-toggle="tooltip" title="Estado Civil" style="color:red; font-size:19px"></span>
                                             <span><?= $a->estado_civil ?></span>                           
                                         </div>
                                         <div style="margin:7px">
-                                            <span class="glyphicon glyphicon-wrench" data-toggle="tooltip" title="Profissão"></span>
+                                            <span class="glyphicon glyphicon-wrench" data-toggle="tooltip" title="Profissão" style="color:brown; font-size:19px"></span>
                                             <span><?= $a->profissao ?></span>
                                         </div>
                                         <div style="margin:7px">
-                                            <span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Nascimento"></span>
+                                            <span class="glyphicon glyphicon-calendar" data-toggle="tooltip" title="Nascimento" style="color:purple; font-size:19px"></span>
                                             <span><?= $a->data_nascimento ?></span>
                                         </div>
                                         <div style="margin:7px">
-                                            <span class="glyphicon glyphicon-map-marker" data-toggle="tooltip" title="Local dormitório"></span>
+                                            <span class="glyphicon glyphicon-map-marker" data-toggle="tooltip" title="Local dormitório" style="color:green; font-size:19px"></span>
                                             <span>Avenida rio Branco, 156 - Centro / Rio de Janeiro </span>
                                         </div>
                                     </div>

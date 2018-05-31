@@ -7,7 +7,7 @@
                 <div class="panel-heading c-list">
                     <div class="row">
                         <div class="col-sm-6 col-sm-offset-4">
-                            <span class="title"><h4 id="title"></h4></span>
+                            <span class="title"><h3 id="title"></h3></span>
                         </div>
                         <div class="col-sm-1 col-sm-offset-1  form-inline">
                             <a href="/entrevista/nova/<?= $assistido ?>" data-toggle="tooltip" data-placement="top" title="Adicionar entrevista"><i class="glyphicon glyphicon-comment"  style = "font-size: 20px"></i></a>
@@ -48,7 +48,7 @@
 
     <script type="text/javascript">
        $( document ).ready(function() {
-            $("#title").replaceWith("<h4 id='title'>Histórico de entrevistas de <strong><?= $e->assistido ?></strong></h4>");
+            $("#title").replaceWith("<h3 id='title'>Histórico de entrevistas de <strong><?= $e->assistido ?></strong></h3>");
         });
     </script>
 @stop
