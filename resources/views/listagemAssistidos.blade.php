@@ -38,7 +38,7 @@
                         <li class="list-group-item">
                             <div class="col-xs-12 col-sm-3">
                                 <br/>
-                                <img src="/img/default.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
+                                <img src="/img/assistidos/<?= $a->id ?>.jpg" class="img-responsive img-circle" />
                             </div>
                             <div class="col-xs-12 col-sm-7">
                                 <span class="name"><h3><?= $a->nome ?></h3></span>
@@ -65,7 +65,7 @@
                             <br><br>
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar cadastro"></i></a>
                             <br><br>
-                            <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-trash" style = "font-size: 20px" data-toggle="tooltip" title="Excluir cadastro"></i></a>
+                            <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-trash" style = "font-size: 20px" data-toggle="tooltip" title="Excluir cadastro"></i></a> -->
                             </div>
                             <div class="clearfix"><br/></div>
                         </li>

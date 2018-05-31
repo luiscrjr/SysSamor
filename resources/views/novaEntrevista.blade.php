@@ -27,7 +27,7 @@
                                 <li class="list-group-item">
                                     <div class="col-xs-12 col-sm-3">
                                         <br/>
-                                        <img src="/img/default.jpg" alt="Scott Stevens" class="img-responsive img-circle" />
+                                        <img src="/img/assistidos/<?= $a->id ?>.jpg" class="img-responsive img-circle" />
                                     </div>
                                     <div class="col-xs-12 col-sm-7">
                                         <span class="name"><h3><?= $a->nome ?></h3></span>
@@ -54,7 +54,7 @@
                                     <br><br>
                                     <a href="#" id="addDocs"><i class="glyphicon glyphicon-paperclip" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
                                     <br><br>
-                                    <a href="#" data-toggle="modal" data-target="#exampleModal" data-target="#squarespaceModal" data-placement="top" title="Visualizar entrevistas"><i class="glyphicon glyphicon-list-alt" style = "font-size: 20px" data-toggle="tooltip" title="Adicionar novo documento"></i></a>
+                                    <!-- <a href="#" data-toggle="modal" data-target="#exampleModal" data-target="#squarespaceModal" data-placement="top" title="Visualizar entrevistas"><i class="glyphicon glyphicon-list-alt" style = "font-size: 20px" data-toggle="tooltip" title="Visualizar entrevistas"></i></a> -->
                                     <br><br>   
                                     </div>
                                     <div class="clearfix"><br/></div>

@@ -10,7 +10,7 @@
                             <span class="title"><h4 id="title"></h4></span>
                         </div>
                         <div class="col-sm-1 col-sm-offset-1  form-inline">
-                            <a href="/entrevista/nova/<?= $assistido ?>" data-toggle="tooltip" data-placement="top" title="Adicionar entrevista"><i class="glyphicon glyphicon-comment"></i></a>
+                            <a href="/entrevista/nova/<?= $assistido ?>" data-toggle="tooltip" data-placement="top" title="Adicionar entrevista"><i class="glyphicon glyphicon-comment"  style = "font-size: 20px"></i></a>
                         </div>
                     </div>
                 </div>                

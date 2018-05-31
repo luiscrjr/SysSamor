@@ -56,8 +56,7 @@ class AssistidoController extends Controller{
             $caminhoRelativo = $caminho->documentos != "" ? $caminho->documentos . "\\" : "vazio\\";
         }
         
-        //TODO(lr):Abstrair caminho fisico de downloads
-        $files = File::allFiles("C:\\Users\\luis.ribeiro\\samor\\storage\\app\\".$caminhoRelativo);
+        $files = File::allFiles($_ENV["DOC_STORAGE"].$caminhoRelativo);
         $allFiles = array();
 
         foreach ($files as $file)
@@ -90,10 +89,10 @@ class AssistidoController extends Controller{
             return redirect('/entrevista/nova/'.$id)->with("Erro", "Erro ao adicionar arquivo");
         }
         else{
-            //TODO(lr):Buscar o caminho relativo pelo banco
-            $caminhoRelativo = "20180524060556000000-1"."\\";
+            //TODO(lr):update em documentos caso o caminho seja vazio
+            $caminhoRelativo = DB::select('select documentos from assistidos where id = ?', [$id])[0]->documentos . "\\";
 
-            $caminhoFisico = "C:\\Users\\luis.ribeiro\\samor\\storage\\app\\";
+            $caminhoFisico = $_ENV["DOC_STORAGE"];
 
             $fileExtension = $file->guessExtension();
 
@@ -110,16 +109,9 @@ class AssistidoController extends Controller{
         $id = Request::route('id');
         $documento = Request::route('documento');
 
-        $caminhodocumento = DB::select('select documentos from assistidos where id = ?', [$id]);
+        $caminhoRelativo = DB::select('select documentos from assistidos where id = ?', [$id])[0]->documentos . "\\";
 
-        $caminhoRelativo = "";
-
-        foreach ($caminhodocumento as $caminho) {
-            $caminhoRelativo = $caminho->documentos . "\\";
-        }
-        
-        //TODO(lr):Abstrair caminho fisico de downloads
-        $caminhoFisico = "C:\\Users\\luis.ribeiro\\samor\\storage\\app\\";
+        $caminhoFisico = $_ENV["DOC_STORAGE"];
     
         $headers = [
             'Content-Type' => '',
@@ -131,6 +123,7 @@ class AssistidoController extends Controller{
     public function getEstadoPorId(){
         
         $id = Request::route('id');
+        //TODO(lr): refatorar buscando o uf direto do objeto DB
         $estados = DB::select('select uf from estados e inner join cidades c on e.id = c.estado where c.id = ?', [$id]);
 
         $uf = "";
@@ -142,7 +135,5 @@ class AssistidoController extends Controller{
 
         return \Response::json($uf);
     }
-
-
     
 }
