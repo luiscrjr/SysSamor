@@ -48,15 +48,10 @@ class AssistidoController extends Controller{
 
         //TODO(lr): Criar a DAO apropriada
         $documentos = DB::select('select documentos from assistidos where id = ?', [$id]);
-
-        $caminhoRelativo = "vazio\\";
-
-        foreach ($documentos as $caminho) {
-            
-            $caminhoRelativo = $caminho->documentos != "" ? $caminho->documentos . "\\" : "vazio\\";
-        }
+    
+        $caminhoRelativo = $documentos[0]->documentos != "" ? $documentos[0]->documentos . "\\" : "vazio\\";
         
-        $files = File::allFiles($_ENV["DOC_STORAGE"].$caminhoRelativo);
+        $files = File::allFiles(env("DOC_STORAGE").$caminhoRelativo);
         $allFiles = array();
 
         foreach ($files as $file)
@@ -78,7 +73,7 @@ class AssistidoController extends Controller{
         //TODO(lr): Verificar se já existe diretório criado antes de criar
         //TODO(lr): Separar métodos de gravação
         //DB::update('update assistidos set documentos = ? where id = ?', [$pasta, $id]);
-        //mkdir("c:\\temp\\" . $pasta);
+        //mkdir(env("DOC_STORAGE") . $pasta);
 
         $file = \Input::file('docUpload'); 
 
@@ -92,13 +87,11 @@ class AssistidoController extends Controller{
             //TODO(lr):update em documentos caso o caminho seja vazio
             $caminhoRelativo = DB::select('select documentos from assistidos where id = ?', [$id])[0]->documentos . "\\";
 
-            $caminhoFisico = $_ENV["DOC_STORAGE"];
-
             $fileExtension = $file->guessExtension();
 
             $fileName = $fileType . "-" . $pasta . "." . $fileExtension;
 
-            $file->move($caminhoFisico.$caminhoRelativo, $fileName);
+            $file->move(env("DOC_STORAGE").$caminhoRelativo, $fileName);
 
             return redirect('/entrevista/nova/'.$id)->with("Sucesso", "Arquivo adicionado com sucesso");
         }
@@ -111,7 +104,7 @@ class AssistidoController extends Controller{
 
         $caminhoRelativo = DB::select('select documentos from assistidos where id = ?', [$id])[0]->documentos . "\\";
 
-        $caminhoFisico = $_ENV["DOC_STORAGE"];
+        $caminhoFisico = env("DOC_STORAGE");
     
         $headers = [
             'Content-Type' => '',
@@ -123,15 +116,8 @@ class AssistidoController extends Controller{
     public function getEstadoPorId(){
         
         $id = Request::route('id');
-        //TODO(lr): refatorar buscando o uf direto do objeto DB
-        $estados = DB::select('select uf from estados e inner join cidades c on e.id = c.estado where c.id = ?', [$id]);
 
-        $uf = "";
-
-        foreach ($estados as $estado) {
-            
-            $uf = $estado->uf;
-        }
+        $uf = DB::select('select uf from estados e inner join cidades c on e.id = c.estado where c.id = ?', [$id])[0]->uf;
 
         return \Response::json($uf);
     }

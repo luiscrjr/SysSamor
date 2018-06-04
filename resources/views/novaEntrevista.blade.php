@@ -131,6 +131,7 @@
                 $("#exampleModalLabel").replaceWith("<center><h4 class='modal-title' id='exampleModalLabel'>Lista de documentos</h5></center>");
                 $("#modalContent").replaceWith("<div class='modal-body' id='modalContent'>Erro ao processar solicitação.</div>");
                 $('#exampleModal').modal('toggle');
+                console.log(jqXHR);
             }
             });	
             
