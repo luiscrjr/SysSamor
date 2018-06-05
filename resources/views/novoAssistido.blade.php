@@ -89,10 +89,10 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             </div>
                             <div class="col-sm-4">
                                 <label>Cidade de Nascimento</label>
-                                <select name="local_nascimento" id="local_nascimento" class="form-control">
+                                <select name="cidade_nascimento" id="local_nascimento" class="form-control">
                                     <option value="">Selecione a cidade de nascimento</option>
                                     @foreach ($cidades as $c)
-                                        <option value="<?= $c->id ?>"><?= $c->nome ?></option>
+                                        <option value="<?= $c->nome ?>"><?= $c->nome ?></option>
                                     @endforeach
                                 </select>
                                 <br/><br/>
@@ -138,7 +138,7 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                                 <select name="profissao" class="form-control">
                                     <option value="">Selecione a Profissão</option>
                                     @foreach ($profissoes as $p)
-                                        <option value="<?= $p->id ?>"><?= $p->nome ?></option>
+                                        <option value="<?= $p->nome ?>"><?= $p->nome ?></option>
                                     @endforeach
                                     </select>
                                     <br/>
@@ -152,20 +152,20 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             <center><strong>Endereço atual</strong></center></br></br>
                             <div class="col-sm-4">
                                 <label>Logradouro</label>
-                                <input name="dormitorioLogradouro" class="form-control"/>
+                                <input name="logradouro" class="form-control"/>
                                 <br/>
                             </div>
                             <div class="col-sm-3">
                                 <label>Bairro</label>
-                                <input name="dormitorioBairro" class="form-control"/>
+                                <input name="bairro" class="form-control"/>
                                 <br/>
                             </div>
                             <div class="col-sm-4">
                                 <label>Cidade</label>
-                                <select name="dormitorioCidade" id="dormitorioCidade" class="form-control">
+                                <select name="cidade" id="dormitorioCidade" class="form-control">
                                     <option value="">Selecione a cidade onde dorme</option>
                                     @foreach ($cidades as $c)
-                                        <option value="<?= $c->id ?>"><?= $c->nome ?></option>
+                                        <option valId="<?= $c->id ?>" value="<?= $c->nome ?>"><?= $c->nome ?></option>
                                     @endforeach
                                 </select>
                                 <br/>
@@ -222,7 +222,7 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
 
         $.ajax({
             type: "GET",
-            url: "/assistidos/getEstadoPorId/"+$(this).val(),
+            url: "/assistidos/getEstadoPorId/"+$('option:selected',this).attr('valId'),
             dataType: "json", 
             data: {},
             contentType:"application/json; charset=utf-8",
