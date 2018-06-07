@@ -4,8 +4,18 @@
     <div class="row">
     
     @if(old('nome'))
-        Assistido {{old('nome')}} adicionado com sucesso!
+    <script "text/javascript">
+        $( document ).ready(function() {
+            startToast("Assistido "+ '{{old('nome')}}' + " adicionado com sucesso!");
+        })
+    </script>
     @endif
+
+     <script "text/javascript">
+        $( document ).ready(function() {
+            <?= $msg = !empty(session('entrevistaOk'))?"startToast('" . session('entrevistaOk') . "');":""; ?>;
+        })
+    </script>
 
         <div class="col-xs-12 col-sm-offset-1 col-sm-10">
             <div class="panel panel-default">
@@ -16,7 +26,7 @@
                         </div>
                         <div class="col-sm-3 col-sm-offset-1 form-inline" style="margin-top:'100px;'">
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Pesquisar Assistido"><i class="glyphicon glyphicon-search" ></i></a>
-                            <input type="text" id="assistidoSearch" class="form-control" placeholder="Pesquise por nome aqui">
+                            <input type="text" id="assistidoSearch" class="form-control" placeholder="Insira o nome">
                         </div>
                         <div class="col-sm-1">
                             <a href="/assistidos/novo" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-plus"></i></a>
@@ -57,14 +67,18 @@
                                 </div>
                                 <div style="margin:7px">
                                     <span class="glyphicon glyphicon-map-marker" data-toggle="tooltip" title="Local dormitório"  style="color:green; font-size:19px"></span>
-                                    <span>Avenida rio Branco, 156 - Centro / Rio de Janeiro </span>
+                                    <span><?= $a->logradouro . ", " . $a->bairro . ", " . $a->cidade ?> </span>
                                 </div>
                             </div>
                             <div class="col-xs-12 col-sm-2">
                             <br><br>
 
-                            <?= $userLevel?"<a href='/entrevista/listaPorAssistido/" . $a->id ." data-toggle='tooltip' data-placement='top' title='Visualizar entrevistas'><i class='glyphicon glyphicon-list-alt' style = 'font-size: 20px' data-toggle='tooltip' title='Visualizar entrevistas'></i></a>":""; ?>
-                            <!-- <a href="/entrevista/listaPorAssistido/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" title="Visualizar entrevistas"><i class="glyphicon glyphicon-list-alt" style = "font-size: 20px" data-toggle="tooltip" title="Visualizar entrevistas"></i></a> -->
+                            <?=
+                            $userLevel?
+                                        ($link = $a->qtd_entrevistas > 0 ? "<a href='/entrevista/listaPorAssistido/" . $a->id ."' data-toggle='tooltip' data-placement='top' title='Visualizar entrevistas'><i class='glyphicon glyphicon-list-alt' style = 'font-size: 20px' data-toggle='tooltip' title='Visualizar entrevistas'></i></a>":
+                                        "<a href='/entrevista/nova/" . $a->id ."' data-toggle='tooltip' data-placement='top' title='Adicionar entrevista'><i class='glyphicon glyphicon-comment' style = 'font-size: 20px' data-toggle='tooltip' title='Adicionar entrevista'></i></a>") : "";   
+                             ?>
+                             
                             <br><br>
                             <a href="#" data-toggle="tooltip" data-placement="top" ><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar cadastro"></i></a>
                             <br><br>

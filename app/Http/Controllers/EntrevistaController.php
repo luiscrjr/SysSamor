@@ -55,6 +55,6 @@ class EntrevistaController extends Controller{
         $entrevista = new Entrevistas($params);
         $entrevista->save();
 
-        return redirect('/assistidos');
+        return redirect('/assistidos')->with('entrevistaOk', 'Entrevista adicionada com sucesso!');
     }
 }

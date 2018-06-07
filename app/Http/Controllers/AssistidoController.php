@@ -12,7 +12,37 @@ class AssistidoController extends Controller{
 
     public function lista(){
         
-        $assistidos = Assistidos::all();
+        $assistidos = DB::select("SELECT 
+                                    id,
+                                    nome,
+                                    foto,
+                                    documentos,
+                                    escolaridade,
+                                    profissao,
+                                    detalhe_profissao,
+                                    estado_civil,
+                                    rg,
+                                    cpf,
+                                    ctps,
+                                    titulo_eleitor,
+                                    cidade_nascimento,
+                                    local_dormitorio,
+                                    familia,
+                                    motivo_rua,
+                                    nome_pessoa_indicou, 
+                                    data_nascimento, 
+                                    eh_desabrigado, 
+                                    data_eh_desabrigado, 
+                                    logradouro, bairro, 
+                                    cidade,
+                                    count(e.id_entrevistador) qtd_entrevistas
+                                FROM
+                                    assistidos a
+                                        LEFT JOIN
+                                    entrevistas e ON e.id_assistido = a.id
+                                    GROUP BY a.id
+                                ORDER BY a.nome");
+
         $userLevel = \Auth::user()->level;
 
         return view('listagemAssistidos')->with('assistidos', $assistidos)->with('userLevel', $userLevel);
@@ -68,13 +98,16 @@ class AssistidoController extends Controller{
         
         $id = Request::route('id');
         
-        //TODO(lr): Criar a BLL apropriada 
         $pasta = date("Ymdhmsu") . "-" . $id;
-
-        //TODO(lr): Verificar se já existe diretório criado antes de criar
+        
         //TODO(lr): Separar métodos de gravação
-        //DB::update('update assistidos set documentos = ? where id = ?', [$pasta, $id]);
-        //mkdir(env("DOC_STORAGE") . $pasta);
+        $caminhoRelativo = DB::select('select documentos from assistidos where id = ?', [$id])[0]->documentos;
+
+        if(empty($caminhoRelativo)){
+            DB::update('update assistidos set documentos = ? where id = ?', [$pasta, $id]);
+            mkdir(env("DOC_STORAGE") . $pasta);
+            $caminhoRelativo = $pasta;
+        }
 
         $file = \Input::file('docUpload'); 
 
@@ -85,8 +118,8 @@ class AssistidoController extends Controller{
             return redirect('/entrevista/nova/'.$id)->with("Erro", "Erro ao adicionar arquivo");
         }
         else{
-            //TODO(lr):update em documentos caso o caminho seja vazio
-            $caminhoRelativo = DB::select('select documentos from assistidos where id = ?', [$id])[0]->documentos . "\\";
+
+            $caminhoRelativo .= "\\";
 
             $fileExtension = $file->guessExtension();
 
@@ -94,7 +127,7 @@ class AssistidoController extends Controller{
 
             $file->move(env("DOC_STORAGE").$caminhoRelativo, $fileName);
 
-            return redirect('/entrevista/nova/'.$id)->with("Sucesso", "Arquivo adicionado com sucesso");
+            return redirect('/entrevista/nova/'.$id)->with('status', 'Documento adicionado com sucesso!');
         }
     }
 

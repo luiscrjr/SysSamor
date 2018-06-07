@@ -3,9 +3,14 @@
 @section('content')
     <div class="row">
 
-    @if(!empty($Sucesso) || !empty($Erro))
-        Teste
-    @endif
+    
+    <script "text/javascript">
+        $( document ).ready(function() {
+            <?= $msg = !empty(session('status'))?"startToast('" . session('status') . "');":""; ?>;
+        })
+    </script>
+    
+
 
         <div class="col-xs-12 col-sm-offset-1 col-sm-10">
             <div class="panel panel-default">
