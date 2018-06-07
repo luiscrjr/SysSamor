@@ -13,8 +13,9 @@ class AssistidoController extends Controller{
     public function lista(){
         
         $assistidos = Assistidos::all();
+        $userLevel = \Auth::user()->level;
 
-        return view('listagemAssistidos')->with('assistidos', $assistidos);
+        return view('listagemAssistidos')->with('assistidos', $assistidos)->with('userLevel', $userLevel);
     }
 
     public function listaPorId(){

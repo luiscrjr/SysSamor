@@ -53,10 +53,10 @@
 						<div class="form-group">
 							<label class="col-md-4 control-label">Nível</label>
 							<div class="col-md-6">
-							<select name="nivel" id="nivel" class="form-control">
-                                    <option value="">Selecione a nível do usuário</option>
-									<option value="recepcao">Recepção</option>
-									<option value="entrevistador">Entrevistador</option>
+							<select name="level" id="level" class="form-control">
+                                    <option value="0">Selecione o nível do usuário</option>
+									<option value="0">Recepção</option>
+									<option value="1">Entrevistador</option>
                                 </select>
 							</div>
 						</div>
