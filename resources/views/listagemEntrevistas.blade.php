@@ -6,10 +6,10 @@
             <div class="panel panel-default">
                 <div class="panel-heading c-list">
                     <div class="row">
-                        <div class="col-sm-6 col-sm-offset-4">
+                        <div class="col-sm-8 col-sm-offset-2">
                             <span class="title"><h3 id="title"></h3></span>
                         </div>
-                        <div class="col-sm-1 col-sm-offset-1  form-inline">
+                        <div class="col-sm-1 col-sm-offset-1"  style="padding-top:15px;">
                             <a href="/entrevista/nova/<?= $assistido ?>" data-toggle="tooltip" data-placement="top" title="Adicionar entrevista"><i class="glyphicon glyphicon-comment"  style = "font-size: 20px"></i></a>
                         </div>
                     </div>

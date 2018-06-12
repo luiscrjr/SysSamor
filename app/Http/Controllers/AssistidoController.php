@@ -12,6 +12,7 @@ class AssistidoController extends Controller{
 
     public function lista(){
         
+        //TODO(lr): Criar a DAO apropriada
         $assistidos = DB::select("SELECT 
                                     id,
                                     nome,
@@ -70,6 +71,12 @@ class AssistidoController extends Controller{
         $assistido = new Assistidos($params);
         $assistido->save();
 
+        //TODO(lr): Mover para a camada de serviços apropriada
+        $assistidoId = DB::select('select LAST_INSERT_ID() lastId')[0]->lastId;
+
+        $binary_photo = base64_decode(Request::input('mydata'));
+        $result = file_put_contents( 'img/assistidos/'.$assistidoId.'.jpg', $binary_photo );
+
         return redirect('/assistidos')->withInput();
     }
 
@@ -82,6 +89,7 @@ class AssistidoController extends Controller{
     
         $caminhoRelativo = $documentos[0]->documentos != "" ? $documentos[0]->documentos . "\\" : "vazio\\";
         
+        //TODO(lr): Criar a camada de serviços apropriada
         $files = File::allFiles(env("DOC_STORAGE").$caminhoRelativo);
         $allFiles = array();
 

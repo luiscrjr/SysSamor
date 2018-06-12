@@ -48,6 +48,7 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                                 <label>Tirar foto</label>
                                     <div id="my_camera" style="width:290px; height:215px;"></div>
                                     <div id="my_result" class="hidden"></div>
+                                    <input id="mydata" type="hidden" name="mydata" value=""/>
                                 <br/>
                                 <div class="col-sm-6" style="margin-top:-60px; margin-left:1%">
                                     <a href="javascript:void(take_snapshot())" class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok" data-toggle="tooltip" title="Confirmar"></span></a>

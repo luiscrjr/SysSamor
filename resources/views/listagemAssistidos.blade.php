@@ -24,11 +24,11 @@
                         <div class="col-sm-3 col-sm-offset-4">
                             <span class="title"><h3>Lista de Assistidos</h3></span>
                         </div>
-                        <div class="col-sm-3 col-sm-offset-1 form-inline" style="margin-top:'100px;'">
+                        <div class="col-sm-3 col-sm-offset-1 form-inline" style="padding-top:10px;">
                             <a href="#" data-toggle="tooltip" data-placement="top" title="Pesquisar Assistido"><i class="glyphicon glyphicon-search" ></i></a>
                             <input type="text" id="assistidoSearch" class="form-control" placeholder="Insira o nome">
                         </div>
-                        <div class="col-sm-1">
+                        <div class="col-sm-1" style="padding-top:15px;">
                             <a href="/assistidos/novo" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-plus"></i></a>
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                         <li class="list-group-item" id="<?= $a->id ?>">
                             <div class="col-xs-12 col-sm-3">
                                 <br/>
-                                <img src="/img/assistidos/<?= $a->id ?>.jpg" class="img-responsive img-circle" />
+                                <img style="width: 85%; height: auto; border-radius: 10px" src="/img/assistidos/<?= $a->id ?>.jpg"/>
                             </div>
                             <div class="col-xs-12 col-sm-7">
                             <br>
@@ -82,7 +82,6 @@
                             <br><br>
                             <a href="#" data-toggle="tooltip" data-placement="top" ><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar cadastro"></i></a>
                             <br><br>
-                            <!-- <a href="#" data-toggle="tooltip" data-placement="top" title="Adicionar Assistido"><i class="glyphicon glyphicon-trash" style = "font-size: 20px" data-toggle="tooltip" title="Excluir cadastro"></i></a> -->
                             </div>
                             <div class="clearfix"><br/></div>
                         </li>

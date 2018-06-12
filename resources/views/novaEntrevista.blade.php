@@ -32,7 +32,7 @@
                                 <li class="list-group-item">
                                     <div class="col-xs-12 col-sm-3">
                                         <br/>
-                                        <img src="/img/assistidos/<?= $a->id ?>.jpg" class="img-responsive img-circle" />
+                                        <img src="/img/assistidos/<?= $a->id ?>.jpg" style="width: 85%; height: auto; border-radius: 10px"/>
                                     </div>
                                     <div class="col-xs-12 col-sm-7">
                                         <span class="name"><h4><strong><?= $a->nome ?></strong></h4></span>
