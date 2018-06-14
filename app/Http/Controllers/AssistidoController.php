@@ -49,12 +49,14 @@ class AssistidoController extends Controller{
         return view('listagemAssistidos')->with('assistidos', $assistidos)->with('userLevel', $userLevel);
     }
 
-    public function listaPorId(){
+    public function verPorId(){
         
         $id = Request::route('id');
         $assistido = Assistidos::find($id);
+        $cidades = Cidades::all();
+        $profissoes = Profissoes::all();
 
-        return view('listagemAssistidos')->with('assistidos', array($assistido));
+        return view('editaAssistido')->with('assistido', $assistido)->with('cidades', $cidades)->with('profissoes', $profissoes);
     }
 
     public function novo(){
@@ -63,6 +65,15 @@ class AssistidoController extends Controller{
         $profissoes = Profissoes::all();
 
         return view('novoAssistido')->with('cidades', $cidades)->with('profissoes', $profissoes);
+    }
+
+    public function altera(){
+        
+        $params = Request::all();
+        $assistido = new Assistidos($params);
+        $assistido->save();
+
+        return redirect('/assistidos')->with('status', 'Assistido alterado com sucesso!');
     }
 
     public function adiciona(){

@@ -30,6 +30,10 @@ Route::get('/assistidos/listaPorId/{id}', 'AssistidoController@listaPorId');
 
 Route::get('/assistidos/novo', 'AssistidoController@novo');
 
+Route::get('/assistidos/ver/{id}', 'AssistidoController@verPorId');
+
+Route::get('/assistidos/edita', 'AssistidoController@edita');
+
 Route::post('/assistidos/adiciona', 'AssistidoController@adiciona');
 
 Route::get('/assistidos/getEstadoPorId/{id}', 'AssistidoController@getEstadoPorId');

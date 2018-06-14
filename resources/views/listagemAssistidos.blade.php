@@ -80,7 +80,7 @@
                              ?>
                              
                             <br><br>
-                            <a href="#" data-toggle="tooltip" data-placement="top" ><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar cadastro"></i></a>
+                            <a href="/assistidos/ver/<?= $a->id ?>" data-toggle="tooltip" data-placement="top" ><i class="glyphicon glyphicon-pencil" style = "font-size: 20px" data-toggle="tooltip" title="Editar cadastro"></i></a>
                             <br><br>
                             </div>
                             <div class="clearfix"><br/></div>
