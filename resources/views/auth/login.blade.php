@@ -27,14 +27,14 @@
 						<br/><br/>
 
 						<div class="form-group">
-							<label class="col-md-4 control-label">E-Mail</label>
-							<div class="col-md-6">
+							<label class="col-md-3 control-label">E-Mail</label>
+							<div class="col-md-7">
 								<input type="email" class="form-control" name="email" value="{{ old('email') }}">
 							</div>
 						</div>
 						<div class="form-group">
-							<label class="col-md-4 control-label">Senha</label>
-							<div class="col-md-6">
+							<label class="col-md-3 control-label">Senha</label>
+							<div class="col-md-7">
 								<input type="password" class="form-control" name="password">
 							</div>
 						</div>
@@ -49,8 +49,8 @@
 							</div>
 						</div> -->
 						<div class="form-group">
-							<div class="col-md-6 col-md-offset-4">
-								<button type="submit" class="btn btn-primary" style="margin-right: 15px;">
+							<div class="col-md-7 col-md-offset-3">
+								<button type="submit" class="btn btn-primary btn-block" style="margin-right: 15px;">
 									Entrar
 								</button>
 

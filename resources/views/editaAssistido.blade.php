@@ -91,10 +91,13 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             <div class="col-sm-4">
                                 <label>Cidade de Nascimento</label>
                                 <select name="cidade_nascimento" id="local_nascimento" class="form-control">
+
+                                    <?= $firstOption = empty($assistido->cidade_nascimento)?"<option value=''>Selecione a cidade de nascimento</option>":""; ?>
                                     @foreach ($cidades as $c)
                                         <?= $cidadeNascSelected = $c->nome == $assistido->cidade_nascimento ? " selected" : ""; ?>
                                         <option <?= $cidadeNascSelected ?> value="<?= $c->nome ?>"><?= $c->nome ?></option>
                                     @endforeach
+
                                 </select>
                                 <br/><br/>
                             </div>
@@ -107,14 +110,14 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                                 <label>Escolaridade</label>
                                 <select name="escolaridade" id="escolaridade" class="form-control">
 
-                                <?php 
-                                    $escolaridades = ["Ensino Fundamental", "Ensino Medio", "Ensino Superior", "Ensino Fundamental Incompleto", "Ensino Medio Incompleto", "Ensino Superior Incompleto"]; 
-                                ?>
-                                @foreach ($escolaridades as $es)
-                                    <?= $escolaridadeSelected = $es == $assistido->escolaridade ? " selected" : ""; ?>
-                                    <option <?= $escolaridadeSelected ?> value="<?= $es ?>"><?= $es ?></option>
-                                @endforeach
-
+                                    <?= $firstOption = empty($assistido->escolaridade)?"<option value=''>Selecione a escolaridade</option>":""; ?>
+                                    <?php 
+                                        $escolaridades = ["Ensino Fundamental", "Ensino Medio", "Ensino Superior", "Ensino Fundamental Incompleto", "Ensino Medio Incompleto", "Ensino Superior Incompleto"]; 
+                                    ?>
+                                    @foreach ($escolaridades as $es)
+                                        <?= $escolaridadeSelected = $es == $assistido->escolaridade ? " selected" : ""; ?>
+                                        <option <?= $escolaridadeSelected ?> value="<?= $es ?>"><?= $es ?></option>
+                                    @endforeach
 
                                 </select>
                                 <br/>
@@ -123,13 +126,14 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                                 <label>Estado Civil</label>
                                 <select name="estado_civil" id="estado_civil" class="form-control">
                                 
-                                <?php 
-                                    $estadosCivis = ["Solteiro", "Casado", "Separado", "Divorciado", "Viúvo", "Amasiado"]; 
-                                ?>
-                                @foreach ($estadosCivis as $e)
-                                    <?= $estadoCivilSelected = $e == $assistido->estado_civil ? " selected" : ""; ?>
-                                    <option <?= $estadoCivilSelected ?> value="<?= $e ?>"><?= $e ?></option>
-                                @endforeach
+                                    <?= $firstOption = empty($assistido->estado_civil)?"<option value=''>Selecione o estado civil</option>":""; ?>
+                                    <?php 
+                                        $estadosCivis = ["Solteiro", "Casado", "Separado", "Divorciado", "Viúvo", "Amasiado"]; 
+                                    ?>
+                                    @foreach ($estadosCivis as $e)
+                                        <?= $estadoCivilSelected = $e == $assistido->estado_civil ? " selected" : ""; ?>
+                                        <option <?= $estadoCivilSelected ?> value="<?= $e ?>"><?= $e ?></option>
+                                    @endforeach
                                     
                                 </select>
                                 <br/><br/>
@@ -142,11 +146,13 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             <div class="col-sm-4">
                                 <label>Profissão</label>
                                 <select name="profissao" id="profissao" class="form-control">
-                                    <option value="">Selecione a Profissão</option>
-                                        @foreach ($profissoes as $p)
-                                            <?= $profissaoSelected = $p->nome == $assistido->profissao ? " selected" : ""; ?>
-                                            <option <?= $profissaoSelected ?> value="<?= $p->nome ?>"><?= $p->nome ?></option>
-                                        @endforeach
+
+                                    <?= $firstOption = empty($assistido->profissao)?"<option value=''>Selecione a profissao</option>":""; ?>
+                                    @foreach ($profissoes as $p)
+                                        <?= $profissaoSelected = $p->nome == $assistido->profissao ? " selected" : ""; ?>
+                                        <option <?= $profissaoSelected ?> value="<?= $p->nome ?>"><?= $p->nome ?></option>
+                                    @endforeach
+                                    
                                 </select>
                                     <br/>
                             </div>
@@ -170,10 +176,13 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                             <div class="col-sm-4">
                                 <label>Cidade</label>
                                 <select name="cidade" id="dormitorioCidade" class="form-control">
+                                    
+                                    <?= $firstOption = empty($assistido->cidade)?"<option value=''>Selecione a cidade</option>":""; ?>
                                     @foreach ($cidades as $c)
                                         <?= $cidadeSelected = $c->nome == $assistido->cidade ? " selected" : ""; ?>
                                         <option <?= $cidadeSelected ?> value="<?= $c->nome ?>"><?= $c->nome ?></option>
                                     @endforeach
+                                    
                                 </select>
                                 <br/>
                             </div>
