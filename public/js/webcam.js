@@ -5,7 +5,7 @@
 // Based on JPEGCam: http://code.google.com/p/jpegcam/
 // Copyright (c) 2012 - 2017 Joseph Huckaby
 // Licensed under the MIT License
-
+function webCamFacade(){
 (function(window) {
     var _userMedia;
 
@@ -1053,6 +1053,8 @@
 //específico para a página de cadastro 
 
     Webcam.attach( '#my_camera' );
+
+}
                     
     function take_snapshot() {
         Webcam.snap( function(data_uri) {
@@ -1060,7 +1062,7 @@
             document.getElementById('my_result').classList.remove("hidden");
             document.getElementById('my_camera').classList.add("hidden");
             var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');    
-            document.getElementById('mydata').value = raw_image_data;
+            document.getElementById('foto').value = raw_image_data;
         } );
     }
 

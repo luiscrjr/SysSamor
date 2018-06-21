@@ -45,15 +45,21 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                         <br/><br/>
                         <div class="row">
                             <div class="col-offset-1 col-sm-10">
-                                <label>Tirar foto</label>
-                                    <div id="my_camera" style="width:290px; height:215px;"></div>
-                                    <div id="my_result" class="hidden"></div>
-                                    <input id="mydata" type="hidden" name="mydata" value=""/>
+                                <label>Capturar foto</label>
+                                    <br/><br/>
+                                    <div id="divObterFoto">
+                                        <a class="btn btn-default" id="btnObterFoto"><img src="/img/logos/webcam.png"></img></a>
+                                    </div>
+                                    <div id="divFoto" class="hidden">
+                                        <div id="my_camera" style="width:290px; height:215px;"></div>
+                                        <div id="my_result" class="hidden"></div>
+                                        <input id="foto" type="hidden" name="foto" value=""/>
+                                        <div style="margin-top:-35px; margin-left:10px;">
+                                            <a href="javascript:void(take_snapshot())" class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok" data-toggle="tooltip" title="Confirmar"></span></a>
+                                            <a href="javascript:void(hideOldImg())" class="btn btn-danger btn-circle"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Excluir"></span></a>
+                                        </div>
+                                    </div>
                                 <br/>
-                                <div class="col-sm-6" style="margin-top:-60px; margin-left:1%">
-                                    <a href="javascript:void(take_snapshot())" class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok" data-toggle="tooltip" title="Confirmar"></span></a>
-                                    <a href="javascript:void(hideOldImg())" class="btn btn-danger btn-circle"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Excluir"></span></a>
-                                </div>
                             </div>
                         </div> 
                         <div class="row">
@@ -218,6 +224,13 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
             $('#ruaWrapper').addClass("hidden");
          }
      })
+
+     $('#btnObterFoto').on('click', function(){ 
+        $("#divFoto").removeClass("hidden");
+        $("#divObterFoto").addClass("hidden");
+        webCamFacade();
+    });
+
 
     $("#dormitorioCidade").change(function(){
 

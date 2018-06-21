@@ -85,7 +85,7 @@ class AssistidoController extends Controller{
         //TODO(lr): Mover para a camada de serviços apropriada
         $assistidoId = DB::select('select LAST_INSERT_ID() lastId')[0]->lastId;
 
-        $binary_photo = base64_decode(Request::input('mydata'));
+        $binary_photo = base64_decode(Request::input('foto'));
         $result = file_put_contents( 'img/assistidos/'.$assistidoId.'.jpg', $binary_photo );
 
         return redirect('/assistidos')->withInput();

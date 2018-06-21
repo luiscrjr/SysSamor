@@ -45,14 +45,22 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
                         <br/><br/>
                         <div class="row">
                             <div class="col-offset-1 col-sm-10">
-                                <label>Foto</label>
+                                <label>Foto</label><br><br><br>
+                                <div class="col-sm-3" style="width:290px; height:215px;" id="assistidoFoto">
+                                    <img src="/img/assistidos/<?= $assistido->id ?>.jpg"></img>
+                                    <div style="margin-top:-35px; margin-left:10px;">
+                                        <a href="javascript:void(hideOldImg())" id="deletarFoto" class="btn btn-danger btn-circle" style="top:-200px"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Excluir"></span></a>
+                                    </div>
+                                </div>
+                                <div class="col-sm-3" id="divNovaFoto" style="visibility:hidden">
                                     <div id="my_camera" style="width:290px; height:215px;"></div>
-                                    <div id="my_result" style="width:290px; height:215px;"><img src='/img/assistidos/<?= $assistido->id ?>.jpg'></div>
-                                    <input id="mydata" type="hidden" name="mydata" value=""/>
-                                <br/>
-                                <div class="col-sm-6" style="margin-top:-60px; margin-left:1%">
-                                    <a href="javascript:void(take_snapshot())" class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok" data-toggle="tooltip" title="Confirmar"></span></a>
-                                    <a href="javascript:void(hideOldImg())" class="btn btn-danger btn-circle"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Excluir"></span></a>
+                                    <div id="my_result" class="hidden"></div>
+                                    <input id="foto" type="hidden" name="foto" value="<?= $assistido->foto ?>"/>
+                                    <div style="margin-top:-35px; margin-left:10px;">
+                                        <a href="javascript:void(take_snapshot())" id="obterFotoNova" class="btn btn-success btn-circle"><span class="glyphicon glyphicon-ok" data-toggle="tooltip" title="Confirmar"></span></a>
+                                        <a href="javascript:void(hideOldImg())" id="deletarFotoNova" class="btn btn-danger btn-circle"><span class="glyphicon glyphicon-trash" data-toggle="tooltip" title="Excluir"></span></a>
+                                    </div>
+                                    <br/>
                                 </div>
                             </div>
                         </div> 
@@ -217,11 +225,28 @@ $isMobile = ($iphone || $ipad || $android || $palmpre || $ipod || $berry || $sym
         </div>
     </div>
 </div>
-
 <script src="/js/webcam.js"></script>
 <script src="/js/jquery3.3.1.js"></script>
 
 <script type="text/javascript">
+    $('#deletarFoto').on('click', function(){ 
+        $("#exampleModalLabel").replaceWith("<center><h4 class='modal-title' id='exampleModalLabel'>Confirmação</h4></center>");
+            $("#modalContent").replaceWith("<div class='modal-body' id='modalContent'><br><center>Deseja realmente excluir a foto atual?</center></div>");            
+            $("#modalButtons").replaceWith("<label id='modalButtons'><button type='button' id='modalConfirmar' class='btn btn-primary' data-dismiss='modal'>Confirmar</button><button type='button' id='modalCancelar' class='btn btn-danger' data-dismiss='modal'>Fechar</button></div>");
+            $('#exampleModal').modal('toggle');                        
+    });
+
+    $('#modalCancelar').on('click', function(){ 
+        $("#modalButtons").replaceWith("<label id='modalButtons'><button type='button' id='modalCancelar' class='btn btn-danger' data-dismiss='modal'>Fechar</button></div>");
+    });
+
+    $(document).on("click","#modalConfirmar",function() {
+        $("#modalButtons").replaceWith("<label id='modalButtons'><button type='button' id='modalCancelar' class='btn btn-danger' data-dismiss='modal'>Fechar</button></div>");
+        $("#assistidoFoto").addClass("hidden");
+        $("#divNovaFoto").css("visibility","visible");
+        webCamFacade();
+    });
+
 
     $('#switch-shadow').on('change', function(){ // on change of state
         if(this.checked) // if changed state is "CHECKED"

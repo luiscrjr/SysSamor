@@ -172,7 +172,7 @@
 					...
 				</div>
 				<div class="modal-footer">
-					<button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+					<label id="modalButtons"><button type="button" id="modalCancelar" class="btn btn-danger" data-dismiss="modal">Fechar</button></div>
 				</div>
 			</div>
 		</div>

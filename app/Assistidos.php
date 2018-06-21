@@ -11,7 +11,7 @@ class Assistidos extends Model {
 	'rg', 'escolaridade', 'profissao', 
 	'detalhe_profissao', 'estado_civil', 
 	'nome_pessoa_indicou', 'titulo_eleitor', 
-	'cidade_nascimento', 'familia', 'motivo_rua',
+	'cidade_nascimento', 'familia', 'motivo_rua', 'foto', 
 	'data_nascimento', 'eh_desabrigado', 'logradouro', 'bairro', 'cidade');
 
 
